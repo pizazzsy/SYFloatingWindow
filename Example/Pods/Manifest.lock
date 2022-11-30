@@ -1,0 +1,23 @@
+PODS:
+  - Masonry (1.1.0)
+  - SYFloatingWindow (0.1.0):
+    - Masonry (= 1.1.0)
+
+DEPENDENCIES:
+  - SYFloatingWindow (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Masonry
+
+EXTERNAL SOURCES:
+  SYFloatingWindow:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SYFloatingWindow: 919e240f9ac1f7e2f52f5049ae33479103a83c42
+
+PODFILE CHECKSUM: ab80ad14aefc32dbc91ba4e7d2eb50c723c78c58
+
+COCOAPODS: 1.11.3

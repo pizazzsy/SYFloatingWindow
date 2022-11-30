@@ -1,0 +1,27 @@
+{
+  "name": "SYFloatingWindow",
+  "version": "0.1.0",
+  "summary": "悬浮窗口",
+  "description": "TODO: 一个悬浮窗口组件",
+  "homepage": "https://github.com/pizazzsy/SYFloatingWindow",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "sy": "864983345@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/pizazzsy/SYFloatingWindow.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "SYFloatingWindow/Classes/**/*",
+  "dependencies": {
+    "Masonry": [
+      "1.1.0"
+    ]
+  }
+}
