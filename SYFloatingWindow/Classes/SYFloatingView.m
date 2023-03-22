@@ -22,10 +22,6 @@
 @property (nonatomic, assign) CGPoint beganPoint;
 // 记录当前试图开始的FrameOrigin
 @property (nonatomic, assign) CGPoint beganOrigin;
-@property (nonatomic, strong) UIView *bgView;
-@property (nonatomic, strong) UIView *containerView;
-@property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UILabel *desLabel;
 
 @end
 @implementation SYFloatingView
@@ -39,11 +35,38 @@
     }
     return self;
 }
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initSubviews];
+        [self activateConstraints];
+        [self bindInteraction];
+    }
+    return self;
+}
+- (instancetype)initWithFrame:(CGRect)frame View:(UIView *)view{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.bgView = view;
+        [self initCustomViews];
+        [self activateCustomConstraints];
+        [self bindInteraction];
+    }
+    return self;
+}
+-(void)initCustomViews{
+    [self addSubview:self.bgView];
+}
 - (void)initSubviews {
     [self addSubview:self.bgView];
     [self addSubview:self.containerView];
     [self addSubview:self.imageView];
     [self addSubview:self.desLabel];
+}
+- (void)activateCustomConstraints{
+    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
 }
 - (void)activateConstraints {
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -165,7 +188,11 @@
 - (UIImageView *)imageView {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
-        [_imageView setImage:[UIImage imageNamed:@"help_me_history"]];
+        if (@available(iOS 13.0, *)) {
+            [_imageView setImage:[UIImage actionsImage]];
+        } else {
+            // Fallback on earlier versions
+        }
         _imageView.hidden = NO;
     }
     return _imageView;
@@ -177,7 +204,7 @@
         [_desLabel setFont:[UIFont systemFontOfSize:12.0f]];
         [_desLabel setTextColor:[UIColor blackColor]];
         _desLabel.textAlignment = NSTextAlignmentCenter;
-        _desLabel.hidden = YES;
+        _desLabel.text = @"拖动我";
     }
     return _desLabel;
 }

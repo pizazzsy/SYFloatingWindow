@@ -8,6 +8,7 @@
 
 #import "SYViewController.h"
 #import <SYFloatingView.h>
+#import <Masonry/Masonry.h>
 
 @interface SYViewController ()<SYFloatingViewDelegate>
 
@@ -18,8 +19,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    SYFloatingView * floatView = [[SYFloatingView alloc]initWithFrame:CGRectMake(0, 50, 70, 70) delegate:self];
+//    SYFloatingView * floatView = [[SYFloatingView alloc]initWithFrame:CGRectMake(0, 50, 70, 70) delegate:self];
+//    [self.view addSubview:floatView];
+//    [floatView floatingViewRoundedRect];
+    
+//    SYFloatingView * floatView = [[SYFloatingView alloc]initWithFrame:CGRectMake(0, 50, 70, 70)];
+//    floatView.delegate = self;
+//    [self.view addSubview:floatView];
+//    [floatView floatingViewRoundedRect];
+    
+    UIView *redView = [[UIView alloc]init];
+    redView.backgroundColor = [UIColor redColor];
+    UILabel *lable = [[UILabel alloc]init];
+    lable.text = @"拖动我";
+    [redView addSubview:lable];
+    [lable mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(0);
+    }];
+
+    SYFloatingView * floatView = [[SYFloatingView alloc]initWithFrame:CGRectMake(0, 50, 70, 70) View:redView];
+    floatView.delegate = self;
     [self.view addSubview:floatView];
     [floatView floatingViewRoundedRect];
 }
