@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SYFloatingWindow'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = '悬浮窗口'
 
 # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ TODO: 一个悬浮窗口组件
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'sy' => '864983345@qq.com' }
-  s.source           = { :git => 'https://github.com/pizazzsy/SYFloatingWindow.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/pizazzsy/SYFloatingWindow.git', :branch=>'main',:tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'
